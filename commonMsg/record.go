@@ -12,7 +12,6 @@ type AddRecordMsg struct {
 }
 
 type UpdateRecordMsg struct {
-	Name      *string
 	TTL       *uint32
 	Forbidden *bool
 }
@@ -32,4 +31,16 @@ type QueryRecordListMsg struct {
 type QueryRecordResp struct {
 	Records []*model.Record
 	Count   int64
+}
+
+type DeleteRecordByNameMsg struct {
+	DomainId   uint
+	RecordName string
+}
+
+type UpdateRecordByNameMsg struct {
+	DomainId   uint
+	RecordName string
+	TTL        *uint32
+	Forbidden  *bool
 }

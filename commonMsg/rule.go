@@ -1,9 +1,5 @@
 package commonMsg
 
-import (
-	"github.com/coreservice-io/dns-common/model"
-)
-
 type AddRuleMsg struct {
 	SysVersion    int
 	RecordId      uint
@@ -22,8 +18,4 @@ type UpdateRuleMsg struct {
 	EndTime       *string //15:08:08
 	Destination   *string
 	Weight        *int
-}
-
-type QueryRuleResp struct {
-	Rules []*model.Rule
 }
