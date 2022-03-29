@@ -21,7 +21,7 @@ type UpdateRuleMsg struct {
 }
 
 type AddRuleByRecordNameMsg struct {
-	DomainId      uint
+	DomainName    string
 	RecordName    string
 	RecordType    string
 	SysVersion    int
@@ -34,7 +34,7 @@ type AddRuleByRecordNameMsg struct {
 }
 
 type QueryRulesByRecordNameMsg struct {
-	DomainId   uint
+	DomainName string
 	RecordName string
 	RecordType string
 }
