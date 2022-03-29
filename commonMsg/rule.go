@@ -1,8 +1,8 @@
 package commonMsg
 
 type AddRuleMsg struct {
-	SysVersion    int
 	RecordId      uint
+	SysVersion    int
 	ContinentCode string
 	CountryCode   string
 	StartTime     string //15:08:08
@@ -18,4 +18,23 @@ type UpdateRuleMsg struct {
 	EndTime       *string //15:08:08
 	Destination   *string
 	Weight        *int
+}
+
+type AddRuleByRecordNameMsg struct {
+	DomainId      uint
+	RecordName    string
+	RecordType    string
+	SysVersion    int
+	ContinentCode string
+	CountryCode   string
+	StartTime     string //15:08:08
+	EndTime       string //15:08:08
+	Destination   string
+	Weight        int
+}
+
+type QueryRulesByRecordNameMsg struct {
+	DomainId   uint
+	RecordName string
+	RecordType string
 }

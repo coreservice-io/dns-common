@@ -36,6 +36,7 @@ type QueryRecordResp struct {
 type DeleteRecordByNameMsg struct {
 	DomainId   uint
 	RecordName string
+	RecordType string
 }
 
 type UpdateRecordByNameMsg struct {
