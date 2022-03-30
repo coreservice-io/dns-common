@@ -1,7 +1,7 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/model"
+	"github.com/coreservice-io/dns-common/data"
 )
 
 type UserLoginMsg struct {
@@ -28,13 +28,28 @@ type QueryUserMsg struct {
 	Offset       int
 }
 
+type AddUserMsg struct {
+	Email       string
+	Password    string
+	Forbidden   bool
+	Roles       []string
+	Permissions []string
+}
+
+type UpdateUserMsg struct {
+	Email       *string
+	Forbidden   *bool
+	Roles       *[]string
+	Permissions *[]string
+}
+
 type RoleSettingResp struct {
-	Roles       model.StringArray
-	Permissions model.StringArray
+	Roles       []string
+	Permissions []string
 }
 
 type QueryUserResp struct {
-	UserList []*model.User
+	UserList []*data.User
 	Count    int64
 }
 
@@ -48,21 +63,6 @@ type UserInfoResp struct {
 	Email       string
 	Token       string
 	Forbidden   bool
-	Roles       model.StringArray
-	Permissions model.StringArray
-}
-
-type AddUserMsg struct {
-	Email       string
-	Password    string
-	Forbidden   bool
-	Roles       model.StringArray
-	Permissions model.StringArray
-}
-
-type UpdateUserMsg struct {
-	Email       *string
-	Forbidden   *bool
-	Roles       *model.StringArray
-	Permissions *model.StringArray
+	Roles       []string
+	Permissions []string
 }

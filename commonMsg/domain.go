@@ -1,7 +1,7 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/model"
+	"github.com/coreservice-io/dns-common/data"
 )
 
 type AddDomainMsg struct {
@@ -26,6 +26,6 @@ type QueryDomainByNameMsg struct {
 }
 
 type QueryDomainResp struct {
-	DomainList []*model.Domain
+	DomainList []*data.Domain
 	Count      int64
 }

@@ -1,7 +1,7 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/model"
+	"github.com/coreservice-io/dns-common/data"
 )
 
 type AddRecordMsg struct {
@@ -42,11 +42,6 @@ type QueryRecordListMsg struct {
 	RecordNameList []string
 }
 
-type QueryRecordResp struct {
-	Records []*model.Record
-	Count   int64
-}
-
 type DeleteRecordByNameMsg struct {
 	DomainName string
 	RecordName string
@@ -58,4 +53,9 @@ type UpdateRecordByNameMsg struct {
 	RecordName string
 	TTL        *uint32
 	Forbidden  *bool
+}
+
+type QueryRecordResp struct {
+	Records []*data.Record
+	Count   int64
 }

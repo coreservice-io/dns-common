@@ -1,7 +1,7 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/model"
+	"github.com/coreservice-io/dns-common/data"
 )
 
 type AddCertMsg struct {
@@ -30,7 +30,7 @@ type CustomDomainCertMsg struct {
 }
 
 type QueryCertResp struct {
-	CertList []*model.Cert
+	CertList []*data.Cert
 	Count    int64
 }
 
