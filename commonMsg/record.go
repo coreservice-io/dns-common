@@ -26,6 +26,8 @@ type UpdateRecordMsg struct {
 type QueryRecordMsg struct {
 	DomainId    uint
 	NamePattern string
+	RecordId    uint
+	RecordType  string
 	Limit       int
 	Offset      int
 }
@@ -33,6 +35,8 @@ type QueryRecordMsg struct {
 type QueryRecordByDomainNameMsg struct {
 	DomainName  string
 	NamePattern string
+	RecordId    uint
+	RecordType  string
 	Limit       int
 	Offset      int
 }
@@ -40,6 +44,7 @@ type QueryRecordByDomainNameMsg struct {
 type QueryRecordListMsg struct {
 	DomainName     string
 	RecordNameList []string
+	RecordType     string
 }
 
 type DeleteRecordByNameMsg struct {
@@ -51,6 +56,7 @@ type DeleteRecordByNameMsg struct {
 type UpdateRecordByNameMsg struct {
 	DomainName string
 	RecordName string
+	RecordType string
 	TTL        *uint32
 	Forbidden  *bool
 }
