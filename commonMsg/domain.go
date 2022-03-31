@@ -16,6 +16,7 @@ type Msg_Req_UpdateDomain struct {
 
 type Msg_Req_QueryDomain struct {
 	DomainPattern string
+	DomainId      uint
 	UserId        uint
 	Limit         int
 	Offset        int
