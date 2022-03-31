@@ -5,7 +5,7 @@ import (
 )
 
 type Msg_Req_AddCert struct {
-	Name        string
+	Domains     []string
 	CertContent string
 	KeyContent  string
 }
