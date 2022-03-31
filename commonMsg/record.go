@@ -1,29 +1,29 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/data"
+	"github.com/coreservice-io/dns-common/tools/http/api"
 )
 
-type AddRecordMsg struct {
+type Msg_Req_AddRecord struct {
 	DomainId uint
 	Name     string
 	Type     string //enum
 	TTL      uint32
 }
 
-type AddRecordByDomainNameMsg struct {
+type Msg_Req_AddRecordByDomainName struct {
 	DomainName string
 	Name       string
 	Type       string //enum
 	TTL        uint32
 }
 
-type UpdateRecordMsg struct {
+type Msg_Req_UpdateRecord struct {
 	TTL       *uint32
 	Forbidden *bool
 }
 
-type QueryRecordMsg struct {
+type Msg_Req_QueryRecord struct {
 	DomainId    uint
 	NamePattern string
 	RecordId    uint
@@ -32,7 +32,7 @@ type QueryRecordMsg struct {
 	Offset      int
 }
 
-type QueryRecordByDomainNameMsg struct {
+type Msg_Req_QueryRecordByDomainName struct {
 	DomainName  string
 	NamePattern string
 	RecordId    uint
@@ -41,19 +41,19 @@ type QueryRecordByDomainNameMsg struct {
 	Offset      int
 }
 
-type QueryRecordListMsg struct {
+type Msg_Req_QueryRecordByGivenName struct {
 	DomainName     string
 	RecordNameList []string
 	RecordType     string
 }
 
-type DeleteRecordByNameMsg struct {
+type Msg_Req_DeleteRecordByName struct {
 	DomainName string
 	RecordName string
 	RecordType string
 }
 
-type UpdateRecordByNameMsg struct {
+type Msg_Req_UpdateRecordByName struct {
 	DomainName string
 	RecordName string
 	RecordType string
@@ -61,7 +61,30 @@ type UpdateRecordByNameMsg struct {
 	Forbidden  *bool
 }
 
-type QueryRecordResp struct {
-	Records []*data.Record
+type Msg_Resp_RecordInfo struct {
+	api.API_META_STATUS
+	Record Record
+}
+
+type Msg_Resp_QueryRecordByGivenName struct {
+	api.API_META_STATUS
+	Records []*Record
+}
+
+type Msg_Resp_QueryRecord struct {
+	api.API_META_STATUS
+	Records []*Record
 	Count   int64
+}
+
+type Record struct {
+	ID        uint
+	DomainId  uint
+	Name      string
+	Type      string //enum
+	Forbidden bool
+	TTL       uint32
+
+	Updated int64
+	Created int64
 }

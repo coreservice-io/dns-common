@@ -1,31 +1,44 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/data"
+	"github.com/coreservice-io/dns-common/tools/http/api"
 )
 
-type AddDomainMsg struct {
+type Msg_Req_AddDomain struct {
 	Domain         string
 	ExpirationTime int64
 }
 
-type UpdateDomainMsg struct {
+type Msg_Req_UpdateDomain struct {
 	Forbidden      *bool
 	ExpirationTime *int64
 }
 
-type QueryDomainMsg struct {
+type Msg_Req_QueryDomain struct {
 	DomainPattern string
 	UserId        uint
 	Limit         int
 	Offset        int
 }
 
-type QueryDomainByNameMsg struct {
-	Domain string
+type Msg_Resp_DomainInfo struct {
+	api.API_META_STATUS
+	Domain Domain
 }
 
-type QueryDomainResp struct {
-	DomainList []*data.Domain
+type Msg_Resp_QueryDomain struct {
+	api.API_META_STATUS
+	DomainList []*Domain
 	Count      int64
+}
+
+type Domain struct {
+	ID             uint
+	Name           string
+	ExpirationTime int64
+	Forbidden      bool
+	UserId         uint
+
+	Updated int64
+	Created int64
 }

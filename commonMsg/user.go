@@ -1,34 +1,34 @@
 package commonMsg
 
 import (
-	"github.com/coreservice-io/dns-common/data"
+	"github.com/coreservice-io/dns-common/tools/http/api"
 )
 
-type UserLoginMsg struct {
+type Msg_Req_UserLogin struct {
 	Email     string
 	Password  string
 	CaptchaId string
 	Captcha   string
 }
 
-type UserResetPasswordMsg struct {
+type Msg_Req_UserResetPassword struct {
 	Email    string
 	Password string
 	VCode    string
 }
 
-type EmailVCodeMsg struct {
+type Msg_Req_EmailVCode struct {
 	Email string
 }
 
-type QueryUserMsg struct {
+type Msg_Req_QueryUser struct {
 	EmailPattern string
 	UserId       uint
 	Limit        int
 	Offset       int
 }
 
-type AddUserMsg struct {
+type Msg_Req_AddUser struct {
 	Email       string
 	Password    string
 	Forbidden   bool
@@ -36,33 +36,45 @@ type AddUserMsg struct {
 	Permissions []string
 }
 
-type UpdateUserMsg struct {
+type Msg_Req_UpdateUser struct {
 	Email       *string
 	Forbidden   *bool
 	Roles       *[]string
 	Permissions *[]string
 }
 
-type RoleSettingResp struct {
+type Msg_Resp_RoleSetting struct {
+	api.API_META_STATUS
 	Roles       []string
 	Permissions []string
 }
 
-type QueryUserResp struct {
-	UserList []*data.User
+type Msg_Resp_QueryUser struct {
+	api.API_META_STATUS
+	UserList []*User
 	Count    int64
 }
 
-type CaptchaResp struct {
+type Msg_Resp_Captcha struct {
+	api.API_META_STATUS
 	Id      string
 	Content string
 }
 
-type UserInfoResp struct {
+type Msg_Resp_UserInfo struct {
+	api.API_META_STATUS
+	User User
+}
+
+type User struct {
 	ID          uint
 	Email       string
+	Password    string
 	Token       string
 	Forbidden   bool
 	Roles       []string
 	Permissions []string
+
+	Updated int64
+	Created int64
 }
