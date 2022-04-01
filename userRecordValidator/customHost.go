@@ -34,27 +34,28 @@ func GenCnameSetting(applyDomain string, pullZoneName string, hostedDomain strin
 	return
 }
 
-func CheckCnameCorrect(applyDomain string, pullZoneName string, hostedDomain string) error {
-	//before apply must set dns record in customer's dns server
-	//example
-	//applyDomain: www.somedomain.com
-	//pullZoneName: pullzonexxx
-	//hostedDomain: mesoncdn.com
-	//1. CNAME  www.somedomain.com => pullzonexxx.mesoncdn.com
-	//2. CNAME  _acme-challenge.www.somedomain.com => _acme-challenge.www.pullzonexxx.mesoncdn.com
+// CheckChallengeCnameCorrect
+//  before apply must set dns record in customer's dns server
+//  example
+//  applyDomain: www.somedomain.com
+//  pullZoneName: pullzonexxx
+//  hostedDomain: mesoncdn.com
+//  1. CNAME  www.somedomain.com => pullzonexxx.mesoncdn.com
+//  2. CNAME  _acme-challenge.www.somedomain.com => _acme-challenge.www.pullzonexxx.mesoncdn.com
+func CheckChallengeCnameCorrect(applyDomain string, pullZoneName string, hostedDomain string) error {
 
-	hostDomainCname, challengeReord, challengeTarget := GenCnameSetting(applyDomain, pullZoneName, hostedDomain)
+	_, challengeRecord, challengeTarget := GenCnameSetting(applyDomain, pullZoneName, hostedDomain)
 
-	dest, err := net.LookupCNAME(applyDomain)
-	if err != nil {
-		return err
-	}
+	//dest, err := net.LookupCNAME(applyDomain)
+	//if err != nil {
+	//	return err
+	//}
+	//
+	//if dest != hostDomainCname+"." {
+	//	return CustomHostDomainCnameErr
+	//}
 
-	if dest != hostDomainCname+"." {
-		return CustomHostDomainCnameErr
-	}
-
-	dest, err = net.LookupCNAME(challengeReord)
+	dest, err := net.LookupCNAME(challengeRecord)
 	if err != nil {
 		return err
 	}
