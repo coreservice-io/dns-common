@@ -2,7 +2,6 @@ package userRecordValidator
 
 import (
 	"log"
-	"net"
 	"testing"
 )
 
@@ -12,5 +11,5 @@ func Test_gen(t *testing.T) {
 }
 
 func Test_cname(t *testing.T) {
-	log.Println(net.LookupCNAME("pullzone1.mesoncert.fun"))
+	log.Println(LookupCNAME("_acme-challenge.pullzone1.mesoncert.fun"))
 }

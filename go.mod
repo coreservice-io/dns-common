@@ -2,12 +2,12 @@ module github.com/coreservice-io/dns-common
 
 go 1.17
 
-require (
-	github.com/imroc/req v0.3.2
-	github.com/json-iterator/go v1.1.12
-)
+require github.com/miekg/dns v1.1.48
 
 require (
-	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
-	github.com/modern-go/reflect2 v1.0.2 // indirect
+	golang.org/x/mod v0.4.2 // indirect
+	golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985 // indirect
+	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	golang.org/x/tools v0.1.6-0.20210726203631-07bc1bf47fb2 // indirect
+	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 )

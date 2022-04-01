@@ -2,12 +2,47 @@ package userRecordValidator
 
 import (
 	"errors"
-	"net"
 	"strings"
+	"time"
+
+	"github.com/miekg/dns"
 )
 
 var CustomHostDomainCnameErr = errors.New("host domain cname error")
 var ChallengeCnameErr = errors.New("challenge cname error")
+
+func LookupCNAME(src string) (dst []string, err error) {
+	c := dns.Client{
+		Timeout: 15 * time.Second,
+	}
+
+	var lastErr error
+	// retry 3 times
+	for i := 0; i < 3; i++ {
+		m := dns.Msg{}
+		m.SetQuestion(src+".", dns.TypeCNAME)
+		r, _, err := c.Exchange(&m, "8.8.8.8:53")
+		if err != nil {
+			lastErr = err
+			time.Sleep(1 * time.Second * time.Duration(i+1))
+			continue
+		}
+
+		dst = []string{}
+		for _, ans := range r.Answer {
+			record, isType := ans.(*dns.CNAME)
+			if isType {
+				dst = append(dst, record.Target)
+			}
+		}
+		lastErr = nil
+		break
+	}
+
+	err = lastErr
+
+	return
+}
 
 // GenCnameSetting
 //  example
@@ -55,12 +90,15 @@ func CheckChallengeCnameCorrect(applyDomain string, pullZoneName string, hostedD
 	//	return CustomHostDomainCnameErr
 	//}
 
-	dest, err := net.LookupCNAME(challengeRecord)
+	dest, err := LookupCNAME(challengeRecord)
 	if err != nil {
 		return err
 	}
+	if len(dest) == 0 {
+		return errors.New("CNAME record not found")
+	}
 
-	if dest != challengeTarget+"." {
+	if dest[0] != challengeTarget+"." {
 		return ChallengeCnameErr
 	}
 
