@@ -5,42 +5,42 @@ import (
 )
 
 type Msg_Req_AddRule struct {
-	RecordId      uint
-	SysVersion    int
-	ContinentCode string
-	CountryCode   string
-	StartTime     string //15:08:08
-	EndTime       string //15:08:08
-	Destination   string
-	Weight        int
+	Record_id      uint
+	Sys_version    int
+	Continent_code string
+	Country_code   string
+	Start_time     string //15:08:08
+	End_time       string //15:08:08
+	Destination    string
+	Weight         int
 }
 
 type Msg_Req_UpdateRule struct {
-	ContinentCode *string
-	CountryCode   *string
-	StartTime     *string //15:08:08
-	EndTime       *string //15:08:08
-	Destination   *string
-	Weight        *int
+	Continent_code *string
+	Country_code   *string
+	Start_time     *string //15:08:08
+	End_time       *string //15:08:08
+	Destination    *string
+	Weight         *int
 }
 
 type Msg_Req_AddRuleByRecordName struct {
-	DomainName    string
-	RecordName    string
-	RecordType    string
-	SysVersion    int
-	ContinentCode string
-	CountryCode   string
-	StartTime     string //15:08:08
-	EndTime       string //15:08:08
-	Destination   string
-	Weight        int
+	Domain_name    string
+	Record_name    string
+	Record_type    string
+	Sys_version    int
+	Continent_code string
+	Country_code   string
+	Start_time     string //15:08:08
+	End_time       string //15:08:08
+	Destination    string
+	Weight         int
 }
 
 type Msg_Req_QueryRulesByRecordName struct {
-	DomainName string
-	RecordName string
-	RecordType string
+	Domain_name string
+	Record_name string
+	Record_type string
 }
 
 type Msg_Resp_RuleInfo struct {
@@ -54,15 +54,15 @@ type Msg_Resp_Rules struct {
 }
 
 type Rule struct {
-	ID            uint
-	SysVersion    int
-	RecordId      uint
-	ContinentCode string
-	CountryCode   string
-	StartTimeSecs int64 //range 0-86399
-	EndTimeSecs   int64 //range 0-86399 End>Start
-	Destination   string
-	Weight        int
+	ID              uint
+	Sys_version     int
+	Record_id       uint
+	Continent_code  string
+	Country_code    string
+	Start_time_secs int64 //range 0-86399
+	End_time_secs   int64 //range 0-86399 End>Start
+	Destination     string
+	Weight          int
 
 	Updated int64
 	Created int64

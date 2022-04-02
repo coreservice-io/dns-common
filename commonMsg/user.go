@@ -5,10 +5,10 @@ import (
 )
 
 type Msg_Req_UserLogin struct {
-	Email     string
-	Password  string
-	CaptchaId string
-	Captcha   string
+	Email      string
+	Password   string
+	Captcha_id string
+	Captcha    string
 }
 
 type Msg_Req_UserResetPassword struct {
@@ -22,10 +22,10 @@ type Msg_Req_EmailVCode struct {
 }
 
 type Msg_Req_QueryUser struct {
-	EmailPattern string
-	UserId       uint
-	Limit        int
-	Offset       int
+	Email_pattern string
+	User_id       uint
+	Limit         int
+	Offset        int
 }
 
 type Msg_Req_AddUser struct {
@@ -51,8 +51,8 @@ type Msg_Resp_RoleSetting struct {
 
 type Msg_Resp_QueryUser struct {
 	api.API_META_STATUS
-	UserList []*User
-	Count    int64
+	User_list []*User
+	Count     int64
 }
 
 type Msg_Resp_Captcha struct {

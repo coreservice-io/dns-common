@@ -5,17 +5,17 @@ import (
 )
 
 type Msg_Req_AddRecord struct {
-	DomainId uint
-	Name     string
-	Type     string //enum
-	TTL      uint32
+	Domain_id uint
+	Name      string
+	Type      string //enum
+	TTL       uint32
 }
 
 type Msg_Req_AddRecordByDomainName struct {
-	DomainName string
-	Name       string
-	Type       string //enum
-	TTL        uint32
+	Domain_name string
+	Name        string
+	Type        string //enum
+	TTL         uint32
 }
 
 type Msg_Req_UpdateRecord struct {
@@ -24,41 +24,41 @@ type Msg_Req_UpdateRecord struct {
 }
 
 type Msg_Req_QueryRecord struct {
-	DomainId    uint
-	NamePattern string
-	RecordId    uint
-	RecordType  string
-	Limit       int
-	Offset      int
+	Domain_id    uint
+	Name_pattern string
+	Record_id    uint
+	Record_type  string
+	Limit        int
+	Offset       int
 }
 
 type Msg_Req_QueryRecordByDomainName struct {
-	DomainName  string
-	NamePattern string
-	RecordId    uint
-	RecordType  string
-	Limit       int
-	Offset      int
+	Domain_name  string
+	Name_pattern string
+	Record_id    uint
+	Record_type  string
+	Limit        int
+	Offset       int
 }
 
 type Msg_Req_QueryRecordByGivenName struct {
-	DomainName     string
-	RecordNameList []string
-	RecordType     string
+	Domain_name      string
+	Record_name_list []string
+	Record_type      string
 }
 
 type Msg_Req_DeleteRecordByName struct {
-	DomainName string
-	RecordName string
-	RecordType string
+	Domain_name string
+	Record_name string
+	Record_type string
 }
 
 type Msg_Req_UpdateRecordByName struct {
-	DomainName string
-	RecordName string
-	RecordType string
-	TTL        *uint32
-	Forbidden  *bool
+	Domain_name string
+	Record_name string
+	Record_type string
+	TTL         *uint32
+	Forbidden   *bool
 }
 
 type Msg_Resp_RecordInfo struct {
@@ -79,7 +79,7 @@ type Msg_Resp_QueryRecord struct {
 
 type Record struct {
 	ID        uint
-	DomainId  uint
+	Domain_id uint
 	Name      string
 	Type      string //enum
 	Forbidden bool

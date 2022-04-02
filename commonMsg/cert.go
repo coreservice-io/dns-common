@@ -5,28 +5,28 @@ import (
 )
 
 type Msg_Req_AddCert struct {
-	Domains     []string
-	CertContent string
-	KeyContent  string
+	Domains      []string
+	Cert_content string
+	Key_content  string
 }
 
 type Msg_Req_UploadCert struct {
-	CertContent string
-	KeyContent  string
+	Cert_content string
+	Key_content  string
 }
 
 type Msg_Req_QueryCert struct {
-	NamePattern string
-	UserId      uint
-	Limit       int
-	Offset      int
+	Name_pattern string
+	User_id      uint
+	Limit        int
+	Offset       int
 }
 
 //custom apply cert
 type Msg_Req_ApplyCustomCert struct {
-	ApplyDomain  string //ex. example.customdomain.com  (cname to pz1.mesoncdn.com)
-	PullZoneName string //ex. pz1
-	HostedDomain string //ex. mesoncdn.com
+	Apply_domain   string //ex. example.customdomain.com  (cname to pz1.mesoncdn.com)
+	Pull_zone_name string //ex. pz1
+	Hosted_domain  string //ex. mesoncdn.com
 }
 
 type Msg_Resp_CertInfo struct {
@@ -36,14 +36,14 @@ type Msg_Resp_CertInfo struct {
 
 type Msg_Resp_QueryCert struct {
 	api.API_META_STATUS
-	CertList []*Cert
-	Count    int64
+	Cert_list []*Cert
+	Count     int64
 }
 
 type Msg_Resp_CertContent struct {
 	api.API_META_STATUS
-	CertContent string
-	KeyContent  string
+	Cert_content string
+	Key_content  string
 }
 
 type Msg_Resp_CertHash struct {
@@ -52,14 +52,14 @@ type Msg_Resp_CertHash struct {
 }
 
 type Cert struct {
-	ID             uint
-	Name           string
-	UserId         uint
-	CertContent    string
-	KeyContent     string
-	ExpirationTime int64
-	Hash           string
-	RelatedDomain  []string
+	ID              uint
+	Name            string
+	User_id         uint
+	Cert_content    string
+	Key_content     string
+	Expiration_time int64
+	Hash            string
+	Related_domain  []string
 
 	Updated int64
 	Created int64

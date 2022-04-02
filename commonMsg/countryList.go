@@ -6,12 +6,12 @@ import (
 
 type Msg_Resp_CountryList struct {
 	api.API_META_STATUS
-	CountryList map[string]CountryData
+	Country_list map[string]CountryData
 }
 
 type CountryData struct {
-	CountryCode   string
-	CountryName   string
-	ContinentCode string
-	ContinentName string
+	Country_code   string
+	Country_name   string
+	Continent_code string
+	Continent_name string
 }

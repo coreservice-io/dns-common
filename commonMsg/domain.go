@@ -5,21 +5,21 @@ import (
 )
 
 type Msg_Req_AddDomain struct {
-	Domain         string
-	ExpirationTime int64
+	Domain          string
+	Expiration_time int64
 }
 
 type Msg_Req_UpdateDomain struct {
-	Forbidden      *bool
-	ExpirationTime *int64
+	Forbidden       *bool
+	Expiration_time *int64
 }
 
 type Msg_Req_QueryDomain struct {
-	DomainPattern string
-	DomainId      uint
-	UserId        uint
-	Limit         int
-	Offset        int
+	Domain_pattern string
+	Domain_id      uint
+	User_id        uint
+	Limit          int
+	Offset         int
 }
 
 type Msg_Resp_DomainInfo struct {
@@ -29,16 +29,16 @@ type Msg_Resp_DomainInfo struct {
 
 type Msg_Resp_QueryDomain struct {
 	api.API_META_STATUS
-	DomainList []*Domain
-	Count      int64
+	Domain_list []*Domain
+	Count       int64
 }
 
 type Domain struct {
-	ID             uint
-	Name           string
-	ExpirationTime int64
-	Forbidden      bool
-	UserId         uint
+	ID              uint
+	Name            string
+	Expiration_time int64
+	Forbidden       bool
+	User_id         uint
 
 	Updated int64
 	Created int64
