@@ -25,12 +25,16 @@ type Msg_Req_Record_Filter struct {
 }
 
 //add api msg
-type Msg_Req_AddRecord struct {
+type Msg_Req_AddRecord_Filter struct {
 	Domain_id   *uint
 	Domain_name *string
-	Name        string
-	Type        string
-	TTL         uint32
+}
+
+type Msg_Req_AddRecord struct {
+	Filter Msg_Req_AddRecord_Filter
+	Name   string
+	Type   string
+	TTL    uint32
 }
 
 type Msg_Resp_AddRecord struct {
