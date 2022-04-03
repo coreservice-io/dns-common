@@ -14,11 +14,12 @@ spec00-fikcbikcafkcdax-17-thisisthepullzone.domain.com
 
 example
 
-applyDomain: www.somedomain.com
+Apply_domain: www.somedomain.com
 
-pullZoneName: pullzonexxx
+Txt_name_tag: pullzonexxx
 
-hostedDomain: mesoncdn.com
+Hosted_domain: mesoncdn.com
+
 
 gen setting
 
