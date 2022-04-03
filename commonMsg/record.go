@@ -4,87 +4,63 @@ import (
 	"github.com/coreservice-io/dns-common/tools/http/api"
 )
 
-type Msg_Req_AddRecord struct {
+type Record struct {
+	Id        uint
 	Domain_id uint
 	Name      string
-	Type      string //enum
+	Type      string
 	TTL       uint32
+	Forbidden bool
+
+	Updated int64
+	Created int64
 }
 
-type Msg_Req_AddRecordByDomainName struct {
-	Domain_name string
+type Msg_Req_Record_Filter struct {
+	Id          *uint
+	Name        *[]string
+	Type        *string
+	Domain_id   *uint
+	Domain_name *string
+}
+
+//add api msg
+type Msg_Req_AddRecord struct {
+	Domain_id   *uint
+	Domain_name *string
 	Name        string
-	Type        string //enum
+	Type        string
 	TTL         uint32
 }
 
-type Msg_Req_UpdateRecord struct {
+type Msg_Resp_AddRecord struct {
+	api.API_META_STATUS
+	Record *Record
+}
+
+//update
+type Msg_Req_UpdateRecord_To struct {
 	TTL       *uint32
 	Forbidden *bool
 }
 
+type Msg_Req_UpdateRecord struct {
+	Filter Msg_Req_Record_Filter
+	Update Msg_Req_UpdateRecord_To
+}
+
+//delete
+//delete will use Msg_Req_Record_Filter as msg
+
+//query
 type Msg_Req_QueryRecord struct {
-	Domain_id    uint
-	Name_pattern string
-	Record_id    uint
-	Record_type  string
-	Limit        int
-	Offset       int
-}
-
-type Msg_Req_QueryRecordByDomainName struct {
-	Domain_name  string
-	Name_pattern string
-	Record_id    uint
-	Record_type  string
-	Limit        int
-	Offset       int
-}
-
-type Msg_Req_QueryRecordByGivenName struct {
-	Domain_name      string
-	Record_name_list []string
-	Record_type      string
-}
-
-type Msg_Req_DeleteRecordByName struct {
-	Domain_name string
-	Record_name string
-	Record_type string
-}
-
-type Msg_Req_UpdateRecordByName struct {
-	Domain_name string
-	Record_name string
-	Record_type string
-	TTL         *uint32
-	Forbidden   *bool
-}
-
-type Msg_Resp_RecordInfo struct {
-	api.API_META_STATUS
-	Record Record
-}
-
-type Msg_Resp_QueryRecordByGivenName struct {
-	api.API_META_STATUS
-	Records []*Record
+	Filter Msg_Req_Record_Filter
+	Limit  int
+	Offset int
 }
 
 type Msg_Resp_QueryRecord struct {
 	api.API_META_STATUS
 	Records []*Record
 	Count   int64
-}
-
-type Record struct {
-	ID        uint
-	Domain_id uint
-	Name      string
-	Type      string //enum
-	Forbidden bool
-	TTL       uint32
-
-	Updated int64
-	Created int64
 }

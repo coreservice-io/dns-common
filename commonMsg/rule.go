@@ -4,57 +4,8 @@ import (
 	"github.com/coreservice-io/dns-common/tools/http/api"
 )
 
-type Msg_Req_AddRule struct {
-	Record_id      uint
-	Sys_version    int
-	Continent_code string
-	Country_code   string
-	Start_time     string //15:08:08
-	End_time       string //15:08:08
-	Destination    string
-	Weight         int
-}
-
-type Msg_Req_UpdateRule struct {
-	Continent_code *string
-	Country_code   *string
-	Start_time     *string //15:08:08
-	End_time       *string //15:08:08
-	Destination    *string
-	Weight         *int
-}
-
-type Msg_Req_AddRuleByRecordName struct {
-	Domain_name    string
-	Record_name    string
-	Record_type    string
-	Sys_version    int
-	Continent_code string
-	Country_code   string
-	Start_time     string //15:08:08
-	End_time       string //15:08:08
-	Destination    string
-	Weight         int
-}
-
-type Msg_Req_QueryRulesByRecordName struct {
-	Domain_name string
-	Record_name string
-	Record_type string
-}
-
-type Msg_Resp_RuleInfo struct {
-	api.API_META_STATUS
-	Rule Rule
-}
-
-type Msg_Resp_Rules struct {
-	api.API_META_STATUS
-	Rules []*Rule
-}
-
 type Rule struct {
-	ID              uint
+	Id              uint
 	Sys_version     int
 	Record_id       uint
 	Continent_code  string
@@ -66,4 +17,57 @@ type Rule struct {
 
 	Updated int64
 	Created int64
+}
+
+//filter
+type Msg_Req_Rule_Filter struct {
+	Record_id   *uint
+	Domain_name *string
+	Record_name *string
+	Record_type *string
+}
+
+//add
+type Msg_Req_AddRule struct {
+	Filter         Msg_Req_Rule_Filter
+	Sys_version    int
+	Continent_code string
+	Country_code   string
+	Start_time     string //15:08:08
+	End_time       string //15:08:08
+	Destination    string
+	Weight         int
+}
+
+type Msg_Resp_AddRule struct {
+	api.API_META_STATUS
+	Rule *Rule
+}
+
+//delete
+//delete will use Msg_Req_Rule_Filter as msg
+
+//query
+type Msg_Req_QueryRules struct {
+	Filter Msg_Req_Rule_Filter
+}
+
+type Msg_Resp_QueryRules struct {
+	api.API_META_STATUS
+	Rules []*Rule
+}
+
+//update
+type Msg_Req_UpdateRule_To struct {
+	Continent_code *string
+	Country_code   *string
+	Start_time     *string //15:08:08
+	End_time       *string //15:08:08
+	Destination    *string
+	Weight         *int
+}
+
+type Msg_Req_UpdateRule struct {
+	Filter Msg_Req_Rule_Filter
+	Update Msg_Req_UpdateRule_To
 }
