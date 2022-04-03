@@ -19,17 +19,9 @@ type Rule struct {
 	Created int64
 }
 
-//filter
-type Msg_Req_Rule_Filter struct {
-	Record_id   *uint
-	Domain_name *string
-	Record_name *string
-	Record_type *string
-}
-
 //add
 type Msg_Req_AddRule struct {
-	//Filter  use record_id in path
+	Record_id      int
 	Sys_version    int
 	Continent_code string
 	Country_code   string
@@ -44,11 +36,14 @@ type Msg_Resp_AddRule struct {
 	Rule *Rule
 }
 
-//delete
-//delete will use in api path
-
 //query
-//use record_id in api path, only support query all rules under record_id
+type Msg_Req_Rule_Query_Filter struct {
+	Record_id uint
+}
+
+type Msg_Req_QueryRule struct {
+	Filter Msg_Req_Rule_Query_Filter
+}
 
 type Msg_Resp_QueryRules struct {
 	api.API_META_STATUS
@@ -56,6 +51,10 @@ type Msg_Resp_QueryRules struct {
 }
 
 //update
+type Msg_Req_Rule_Update_Filter struct {
+	Id []uint
+}
+
 type Msg_Req_UpdateRule_To struct {
 	Continent_code *string
 	Country_code   *string
@@ -66,6 +65,15 @@ type Msg_Req_UpdateRule_To struct {
 }
 
 type Msg_Req_UpdateRule struct {
-	//Filter use id in api path
+	Filter Msg_Req_Rule_Update_Filter
 	Update Msg_Req_UpdateRule_To
+}
+
+//delete
+type Msg_Req_Rule_Delete_Filter struct {
+	Id []uint
+}
+
+type Msg_Req_DeleteRule struct {
+	Filter Msg_Req_Rule_Delete_Filter
 }

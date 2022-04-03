@@ -17,14 +17,37 @@ type User struct {
 	Created int64
 }
 
-type Msg_Req_User_Filter struct {
+//add
+type Msg_Req_AddUser struct {
+	Email       string
+	Password    string
+	Forbidden   bool
+	Roles       []string
+	Permissions []string
+}
+
+//login
+type Msg_Req_UserLogin struct {
+	Email      string
+	Password   string
+	Captcha_id string
+	Captcha    string
+}
+
+//resp for both 'add' and 'login' api
+type Msg_Resp_UserInfo struct {
+	api.API_META_STATUS
+	User *User
+}
+
+//query
+type Msg_Req_User_Query_Filter struct {
 	Id    *int
 	Email *string
 }
 
-//query
 type Msg_Req_QueryUser struct {
-	Filter Msg_Req_User_Filter
+	Filter Msg_Req_User_Query_Filter
 	Limit  int
 	Offset int
 }
@@ -35,22 +58,11 @@ type Msg_Resp_QueryUser struct {
 	Count     int64
 }
 
-//add
-type Msg_Req_AddUser struct {
-	Email       string
-	Password    string
-	Forbidden   bool
-	Roles       []string
-	Permissions []string
-}
-
-//resp for both 'add' and 'login' api
-type Msg_Resp_UserInfo struct {
-	api.API_META_STATUS
-	User *User
-}
-
 //update
+type Msg_Req_User_Update_Filter struct {
+	Id []int
+}
+
 type Msg_Req_UpdateUser_To struct {
 	Forbidden   *bool
 	Roles       *[]string
@@ -58,16 +70,8 @@ type Msg_Req_UpdateUser_To struct {
 }
 
 type Msg_Req_UpdateUser struct {
-	//Filter user id in path
+	Filter Msg_Req_User_Update_Filter
 	Update Msg_Req_UpdateUser_To
-}
-
-//login
-type Msg_Req_UserLogin struct {
-	Email      string
-	Password   string
-	Captcha_id string
-	Captcha    string
 }
 
 //reset pass

@@ -17,14 +17,6 @@ type Cert struct {
 	Created int64
 }
 
-//filter
-type Msg_Req_Cert_Filter struct {
-	Id             *uint
-	User_id        *uint
-	Related_domain *string
-	Hash           *string
-}
-
 //add api msg
 type Msg_Req_AddCert struct {
 	Related_domain []string
@@ -37,23 +29,16 @@ type Msg_Resp_AddCert struct {
 	Cert *Cert
 }
 
-//update api msg
-type Msg_Req_UpdateCert_To struct {
-	Cert_content string
-	Key_content  string
-}
-
-type Msg_Req_UpdateCert struct {
-	//Filter use id in api path
-	Update Msg_Req_UpdateCert_To
-}
-
-//delete
-//delete will use Msg_Req_Cert_Filter as msg
-
 //query api msg
+type Msg_Req_Cert_Query_Filter struct {
+	Id             *uint
+	User_id        *uint
+	Related_domain *string
+	Hash           *string
+}
+
 type Msg_Req_QueryCert struct {
-	Filter Msg_Req_Cert_Filter
+	Filter Msg_Req_Cert_Query_Filter
 	Limit  int
 	Offset int
 }
@@ -62,6 +47,29 @@ type Msg_Resp_QueryCert struct {
 	api.API_META_STATUS
 	Cert_list []*Cert
 	Count     int64
+}
+
+//update api msg
+type Msg_Req_Cert_Update_Filter struct {
+	Id []uint
+}
+
+type Msg_Req_UpdateCert_To struct {
+	Cert_content string
+	Key_content  string
+}
+
+type Msg_Req_UpdateCert struct {
+	Filter Msg_Req_Cert_Update_Filter
+	Update Msg_Req_UpdateCert_To
+}
+
+//delete
+type Msg_Req_Cert_Delete_Filter struct {
+	Id []uint
+}
+type Msg_Req_DeleteCert struct {
+	Filter Msg_Req_Cert_Delete_Filter
 }
 
 //custom apply cert
