@@ -1,9 +1,5 @@
 package commonMsg
 
-import (
-	"github.com/coreservice-io/dns-common/tools/http/api"
-)
-
 type Record struct {
 	Id        uint
 	Domain_id uint
@@ -25,7 +21,7 @@ type Msg_Req_AddRecord struct {
 }
 
 type Msg_Resp_AddRecord struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Record *Record
 }
 
@@ -45,7 +41,7 @@ type Msg_Req_QueryRecord struct {
 }
 
 type Msg_Resp_QueryRecord struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Records []*Record
 	Count   int64
 }

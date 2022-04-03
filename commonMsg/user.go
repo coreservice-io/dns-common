@@ -1,9 +1,5 @@
 package commonMsg
 
-import (
-	"github.com/coreservice-io/dns-common/tools/http/api"
-)
-
 type User struct {
 	Id          uint
 	Email       string
@@ -36,7 +32,7 @@ type Msg_Req_UserLogin struct {
 
 //resp for both 'add' and 'login' api
 type Msg_Resp_UserInfo struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	User *User
 }
 
@@ -53,7 +49,7 @@ type Msg_Req_QueryUser struct {
 }
 
 type Msg_Resp_QueryUser struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	User_list []*User
 	Count     int64
 }
@@ -90,7 +86,7 @@ type Msg_Req_EmailVCode struct {
 
 //captcha
 type Msg_Resp_Captcha struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Id      string
 	Content string
 }

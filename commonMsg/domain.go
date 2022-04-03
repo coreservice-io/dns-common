@@ -1,9 +1,5 @@
 package commonMsg
 
-import (
-	"github.com/coreservice-io/dns-common/tools/http/api"
-)
-
 type Domain struct {
 	Id              uint
 	Name            string
@@ -22,7 +18,7 @@ type Msg_Req_AddDomain struct {
 }
 
 type Msg_Resp_AddDomain struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Domain *Domain
 }
 
@@ -40,7 +36,7 @@ type Msg_Req_QueryDomain struct {
 }
 
 type Msg_Resp_QueryDomain struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Domain_list []*Domain
 	Count       int64
 }

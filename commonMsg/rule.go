@@ -1,9 +1,5 @@
 package commonMsg
 
-import (
-	"github.com/coreservice-io/dns-common/tools/http/api"
-)
-
 type Rule struct {
 	Id              uint
 	Sys_version     int
@@ -32,7 +28,7 @@ type Msg_Req_AddRule struct {
 }
 
 type Msg_Resp_AddRule struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Rule *Rule
 }
 
@@ -46,7 +42,7 @@ type Msg_Req_QueryRule struct {
 }
 
 type Msg_Resp_QueryRules struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Rules []*Rule
 }
 

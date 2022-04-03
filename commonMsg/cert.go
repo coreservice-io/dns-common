@@ -1,9 +1,5 @@
 package commonMsg
 
-import (
-	"github.com/coreservice-io/dns-common/tools/http/api"
-)
-
 type Cert struct {
 	Id              uint
 	User_id         uint
@@ -25,7 +21,7 @@ type Msg_Req_AddCert struct {
 }
 
 type Msg_Resp_AddCert struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Cert *Cert
 }
 
@@ -44,7 +40,7 @@ type Msg_Req_QueryCert struct {
 }
 
 type Msg_Resp_QueryCert struct {
-	api.API_META_STATUS
+	API_META_STATUS
 	Cert_list []*Cert
 	Count     int64
 }
