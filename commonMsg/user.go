@@ -47,7 +47,7 @@ type Msg_Req_AddUser struct {
 //resp for both 'add' and 'login' api
 type Msg_Resp_UserInfo struct {
 	api.API_META_STATUS
-	User User
+	User *User
 }
 
 //update
@@ -58,7 +58,7 @@ type Msg_Req_UpdateUser_To struct {
 }
 
 type Msg_Req_UpdateUser struct {
-	Filter Msg_Req_User_Filter
+	//Filter user id in path
 	Update Msg_Req_UpdateUser_To
 }
 

@@ -29,7 +29,7 @@ type Msg_Req_Rule_Filter struct {
 
 //add
 type Msg_Req_AddRule struct {
-	Filter         Msg_Req_Rule_Filter
+	//Filter  use record_id in path
 	Sys_version    int
 	Continent_code string
 	Country_code   string
@@ -45,12 +45,10 @@ type Msg_Resp_AddRule struct {
 }
 
 //delete
-//delete will use Msg_Req_Rule_Filter as msg
+//delete will use in api path
 
 //query
-type Msg_Req_QueryRules struct {
-	Filter Msg_Req_Rule_Filter
-}
+//use record_id in api path, only support query all rules under record_id
 
 type Msg_Resp_QueryRules struct {
 	api.API_META_STATUS
@@ -68,6 +66,6 @@ type Msg_Req_UpdateRule_To struct {
 }
 
 type Msg_Req_UpdateRule struct {
-	Filter Msg_Req_Rule_Filter
+	//Filter use id in api path
 	Update Msg_Req_UpdateRule_To
 }

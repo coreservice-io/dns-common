@@ -17,11 +17,11 @@ type Record struct {
 }
 
 type Msg_Req_Record_Filter struct {
-	Id          *uint
-	Name        *[]string
-	Type        *string
-	Domain_id   *uint
-	Domain_name *string
+	Id           *uint
+	Name         *[]string //name list
+	Name_pattern *string   //query name pattern
+	Type         *string
+	Domain_id    *uint
 }
 
 //add api msg
@@ -31,10 +31,10 @@ type Msg_Req_AddRecord_Domain_Filter struct {
 }
 
 type Msg_Req_AddRecord struct {
-	Filter Msg_Req_AddRecord_Domain_Filter
-	Name   string
-	Type   string
-	TTL    uint32
+	//Filter use domain_id in api path
+	Name string
+	Type string
+	TTL  uint32
 }
 
 type Msg_Resp_AddRecord struct {
@@ -49,7 +49,7 @@ type Msg_Req_UpdateRecord_To struct {
 }
 
 type Msg_Req_UpdateRecord struct {
-	Filter Msg_Req_Record_Filter
+	//Filter use id in api path
 	Update Msg_Req_UpdateRecord_To
 }
 

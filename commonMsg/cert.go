@@ -44,7 +44,7 @@ type Msg_Req_UpdateCert_To struct {
 }
 
 type Msg_Req_UpdateCert struct {
-	Filter Msg_Req_Cert_Filter
+	//Filter use id in api path
 	Update Msg_Req_UpdateCert_To
 }
 

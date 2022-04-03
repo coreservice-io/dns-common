@@ -34,14 +34,13 @@ type Msg_Resp_AddDomain struct {
 }
 
 //update api msg
-
 type Msg_Req_UpdateDomain_To struct {
 	Forbidden       *bool
 	Expiration_time *int64
 }
 
 type Msg_Req_UpdateDomain struct {
-	Filter Msg_Req_Domain_Filter
+	//Filter use id in path
 	Update Msg_Req_UpdateDomain_To
 }
 
