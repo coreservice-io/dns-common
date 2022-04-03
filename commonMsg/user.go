@@ -74,6 +74,8 @@ type Msg_Req_UpdateUser struct {
 	Update Msg_Req_UpdateUser_To
 }
 
+//using API_META_STATUS as update response
+
 //reset pass
 type Msg_Req_UserResetPassword struct {
 	Email    string

@@ -60,6 +60,8 @@ type Msg_Req_UpdateDomain struct {
 	Update Msg_Req_UpdateDomain_To
 }
 
+//using API_META_STATUS as update response
+
 //delete
 type Msg_Req_Domain_Delete_Filter struct {
 	Id []uint
@@ -68,3 +70,5 @@ type Msg_Req_Domain_Delete_Filter struct {
 type Msg_Req_DeleteDomain struct {
 	Filter Msg_Req_Domain_Delete_Filter
 }
+
+//using API_META_STATUS as delete response

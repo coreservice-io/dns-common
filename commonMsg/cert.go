@@ -64,6 +64,8 @@ type Msg_Req_UpdateCert struct {
 	Update Msg_Req_UpdateCert_To
 }
 
+//using API_META_STATUS as update response
+
 //delete
 type Msg_Req_Cert_Delete_Filter struct {
 	Id []uint
@@ -71,6 +73,8 @@ type Msg_Req_Cert_Delete_Filter struct {
 type Msg_Req_DeleteCert struct {
 	Filter Msg_Req_Cert_Delete_Filter
 }
+
+//using API_META_STATUS as delete response
 
 //custom apply cert
 type Msg_Req_ApplyCustomCert struct {

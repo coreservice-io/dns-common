@@ -69,6 +69,8 @@ type Msg_Req_UpdateRule struct {
 	Update Msg_Req_UpdateRule_To
 }
 
+//using API_META_STATUS as update response
+
 //delete
 type Msg_Req_Rule_Delete_Filter struct {
 	Id []uint
@@ -77,3 +79,5 @@ type Msg_Req_Rule_Delete_Filter struct {
 type Msg_Req_DeleteRule struct {
 	Filter Msg_Req_Rule_Delete_Filter
 }
+
+//using API_META_STATUS as delete response
