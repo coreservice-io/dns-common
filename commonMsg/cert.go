@@ -43,7 +43,7 @@ type Msg_Req_UpdateCert_To struct {
 	Key_content  string
 }
 
-type Msg_Req_UploadCert struct {
+type Msg_Req_UpdateCert struct {
 	Filter Msg_Req_Cert_Filter
 	Update Msg_Req_UpdateCert_To
 }
