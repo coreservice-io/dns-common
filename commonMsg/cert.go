@@ -30,7 +30,7 @@ type Msg_Resp_AddCert struct {
 }
 
 //query api msg
-type Msg_Req_Cert_Query_Filter struct {
+type Msg_Req_QueryCert_Filter struct {
 	Id             *uint
 	User_id        *uint
 	Related_domain *string
@@ -38,7 +38,7 @@ type Msg_Req_Cert_Query_Filter struct {
 }
 
 type Msg_Req_QueryCert struct {
-	Filter Msg_Req_Cert_Query_Filter
+	Filter Msg_Req_QueryCert_Filter
 	Limit  int
 	Offset int
 }
@@ -50,7 +50,7 @@ type Msg_Resp_QueryCert struct {
 }
 
 //update api msg
-type Msg_Req_Cert_Update_Filter struct {
+type Msg_Req_UpdateCert_Filter struct {
 	Id []uint
 }
 
@@ -60,18 +60,18 @@ type Msg_Req_UpdateCert_To struct {
 }
 
 type Msg_Req_UpdateCert struct {
-	Filter Msg_Req_Cert_Update_Filter
+	Filter Msg_Req_UpdateCert_Filter
 	Update Msg_Req_UpdateCert_To
 }
 
 //using API_META_STATUS as update response
 
 //delete
-type Msg_Req_Cert_Delete_Filter struct {
+type Msg_Req_DeleteCert_Filter struct {
 	Id []uint
 }
 type Msg_Req_DeleteCert struct {
-	Filter Msg_Req_Cert_Delete_Filter
+	Filter Msg_Req_DeleteCert_Filter
 }
 
 //using API_META_STATUS as delete response

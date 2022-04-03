@@ -27,14 +27,14 @@ type Msg_Resp_AddDomain struct {
 }
 
 //query api msg
-type Msg_Req_Domain_Query_Filter struct {
+type Msg_Req_QueryDomain_Filter struct {
 	Id      *uint
 	Name    *string
 	User_id *uint
 }
 
 type Msg_Req_QueryDomain struct {
-	Filter Msg_Req_Domain_Query_Filter
+	Filter Msg_Req_QueryDomain_Filter
 	Limit  int
 	Offset int
 }
@@ -46,7 +46,7 @@ type Msg_Resp_QueryDomain struct {
 }
 
 //update api msg
-type Msg_Req_Domain_Update_Filter struct {
+type Msg_Req_UpdateDomain_Filter struct {
 	Id []uint
 }
 
@@ -56,19 +56,19 @@ type Msg_Req_UpdateDomain_To struct {
 }
 
 type Msg_Req_UpdateDomain struct {
-	Filter Msg_Req_Domain_Update_Filter
+	Filter Msg_Req_UpdateDomain_Filter
 	Update Msg_Req_UpdateDomain_To
 }
 
 //using API_META_STATUS as update response
 
 //delete
-type Msg_Req_Domain_Delete_Filter struct {
+type Msg_Req_DeleteDomain_Filter struct {
 	Id []uint
 }
 
 type Msg_Req_DeleteDomain struct {
-	Filter Msg_Req_Domain_Delete_Filter
+	Filter Msg_Req_DeleteDomain_Filter
 }
 
 //using API_META_STATUS as delete response

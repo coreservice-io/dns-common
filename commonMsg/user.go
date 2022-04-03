@@ -41,13 +41,13 @@ type Msg_Resp_UserInfo struct {
 }
 
 //query
-type Msg_Req_User_Query_Filter struct {
+type Msg_Req_QueryUser_Filter struct {
 	Id    *int
 	Email *string
 }
 
 type Msg_Req_QueryUser struct {
-	Filter Msg_Req_User_Query_Filter
+	Filter Msg_Req_QueryUser_Filter
 	Limit  int
 	Offset int
 }
@@ -59,7 +59,7 @@ type Msg_Resp_QueryUser struct {
 }
 
 //update
-type Msg_Req_User_Update_Filter struct {
+type Msg_Req_UpdateUser_Filter struct {
 	Id []int
 }
 
@@ -70,7 +70,7 @@ type Msg_Req_UpdateUser_To struct {
 }
 
 type Msg_Req_UpdateUser struct {
-	Filter Msg_Req_User_Update_Filter
+	Filter Msg_Req_UpdateUser_Filter
 	Update Msg_Req_UpdateUser_To
 }
 

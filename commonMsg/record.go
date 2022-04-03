@@ -30,7 +30,7 @@ type Msg_Resp_AddRecord struct {
 }
 
 //query
-type Msg_Req_Record_Query_Filter struct {
+type Msg_Req_QueryRecord_Filter struct {
 	Id           *uint
 	Name         *[]string //name list
 	Name_pattern *string   //query name pattern
@@ -39,7 +39,7 @@ type Msg_Req_Record_Query_Filter struct {
 }
 
 type Msg_Req_QueryRecord struct {
-	Filter Msg_Req_Record_Query_Filter
+	Filter Msg_Req_QueryRecord_Filter
 	Limit  int
 	Offset int
 }
@@ -51,7 +51,7 @@ type Msg_Resp_QueryRecord struct {
 }
 
 //update
-type Msg_Req_Record_Update_Filter struct {
+type Msg_Req_UpdateRecord_Filter struct {
 	Id []uint
 }
 
@@ -61,19 +61,19 @@ type Msg_Req_UpdateRecord_To struct {
 }
 
 type Msg_Req_UpdateRecord struct {
-	Filter Msg_Req_Record_Update_Filter
+	Filter Msg_Req_UpdateRecord_Filter
 	Update Msg_Req_UpdateRecord_To
 }
 
 //using API_META_STATUS as update response
 
 //delete
-type Msg_Req_Record_Delete_Filter struct {
+type Msg_Req_DeleteRecord_Filter struct {
 	Id []uint
 }
 
 type Msg_Req_DeleteRecord struct {
-	Filter Msg_Req_Record_Delete_Filter
+	Filter Msg_Req_DeleteRecord_Filter
 }
 
 //using API_META_STATUS as delete response

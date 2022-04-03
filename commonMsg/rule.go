@@ -37,12 +37,12 @@ type Msg_Resp_AddRule struct {
 }
 
 //query
-type Msg_Req_Rule_Query_Filter struct {
+type Msg_Req_QueryRule_Filter struct {
 	Record_id uint
 }
 
 type Msg_Req_QueryRule struct {
-	Filter Msg_Req_Rule_Query_Filter
+	Filter Msg_Req_QueryRule_Filter
 }
 
 type Msg_Resp_QueryRules struct {
@@ -51,7 +51,7 @@ type Msg_Resp_QueryRules struct {
 }
 
 //update
-type Msg_Req_Rule_Update_Filter struct {
+type Msg_Req_UpdateRule_Filter struct {
 	Id []uint
 }
 
@@ -65,19 +65,19 @@ type Msg_Req_UpdateRule_To struct {
 }
 
 type Msg_Req_UpdateRule struct {
-	Filter Msg_Req_Rule_Update_Filter
+	Filter Msg_Req_UpdateRule_Filter
 	Update Msg_Req_UpdateRule_To
 }
 
 //using API_META_STATUS as update response
 
 //delete
-type Msg_Req_Rule_Delete_Filter struct {
+type Msg_Req_DeleteRule_Filter struct {
 	Id []uint
 }
 
 type Msg_Req_DeleteRule struct {
-	Filter Msg_Req_Rule_Delete_Filter
+	Filter Msg_Req_DeleteRule_Filter
 }
 
 //using API_META_STATUS as delete response
