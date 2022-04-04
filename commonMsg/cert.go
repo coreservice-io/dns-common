@@ -27,10 +27,9 @@ type Msg_Resp_AddCert struct {
 
 //query api msg
 type Msg_Req_QueryCert_Filter struct {
-	Id             *uint
-	User_id        *uint
-	Related_domain *string
-	Hash           *string
+	Id                     *uint
+	User_id                *uint
+	Related_domain_pattern *string
 }
 
 type Msg_Req_QueryCert struct {
@@ -77,4 +76,10 @@ type Msg_Req_ApplyCustomCert struct {
 	Apply_domain  string //ex. example.customdomain.com  (cname to pz1.mesoncdn.com)
 	Txt_name_tag  string //ex. pz1
 	Hosted_domain string //ex. mesoncdn.com
+}
+
+type Msg_Resp_ApplyCustomCert struct {
+	API_META_STATUS
+	Cert_content string
+	Key_content  string
 }

@@ -24,9 +24,9 @@ type Msg_Resp_AddDomain struct {
 
 //query api msg
 type Msg_Req_QueryDomain_Filter struct {
-	Id      *uint
-	Name    *string
-	User_id *uint
+	Id           *uint
+	Name_pattern *string
+	User_id      *uint
 }
 
 type Msg_Req_QueryDomain struct {

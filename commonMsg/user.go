@@ -38,8 +38,8 @@ type Msg_Resp_UserInfo struct {
 
 //query
 type Msg_Req_QueryUser_Filter struct {
-	Id    *int
-	Email *string
+	Id            *uint
+	Email_pattern *string
 }
 
 type Msg_Req_QueryUser struct {
@@ -56,7 +56,16 @@ type Msg_Resp_QueryUser struct {
 
 //update
 type Msg_Req_UpdateUser_Filter struct {
-	Id []int
+	Id []uint
+}
+
+//delete
+type Msg_Req_DeleteUser_Filter struct {
+	Id []uint
+}
+
+type Msg_Req_DeleteUser struct {
+	Filter Msg_Req_DeleteUser_Filter
 }
 
 type Msg_Req_UpdateUser_To struct {
@@ -89,4 +98,10 @@ type Msg_Resp_Captcha struct {
 	API_META_STATUS
 	Id      string
 	Content string
+}
+
+type Msg_Resp_Auth_Config struct {
+	API_META_STATUS
+	Roles       []string
+	Permissions []string
 }

@@ -17,7 +17,7 @@ type Rule struct {
 
 //add
 type Msg_Req_AddRule struct {
-	Record_id      int
+	Record_id      uint
 	Sys_version    int
 	Continent_code string
 	Country_code   string
