@@ -13,11 +13,12 @@ type Record struct {
 }
 
 //add api msg
+// @Description Msg_Req_AddRecord
 type Msg_Req_AddRecord struct {
-	Domain_id uint
-	Name      string
-	Type      string
-	TTL       uint32
+	Domain_id uint   //required
+	Name      string //required
+	Type      string //required
+	TTL       uint32 //required
 }
 
 type Msg_Resp_AddRecord struct {
@@ -26,18 +27,20 @@ type Msg_Resp_AddRecord struct {
 }
 
 //query
+// @Description Msg_Req_QueryRecord_Filter
 type Msg_Req_QueryRecord_Filter struct {
-	Id           *uint
-	Name         *[]string //name list
-	Name_pattern *string   //query name pattern
-	Type         *string
-	Domain_id    *uint
+	Id           *uint     //optional
+	Name         *[]string //optional //name list
+	Name_pattern *string   //optional //query name pattern
+	Type         *string   //optional
+	Domain_id    *uint     //optional
 }
 
+// @Description Msg_Req_QueryRecord
 type Msg_Req_QueryRecord struct {
-	Filter Msg_Req_QueryRecord_Filter
-	Limit  int
-	Offset int
+	Filter Msg_Req_QueryRecord_Filter //required
+	Limit  int                        //required
+	Offset int                        //required
 }
 
 type Msg_Resp_QueryRecord struct {
@@ -47,29 +50,34 @@ type Msg_Resp_QueryRecord struct {
 }
 
 //update
+// @Description Msg_Req_UpdateRecord_Filter
 type Msg_Req_UpdateRecord_Filter struct {
-	Id []uint
+	Id []uint //required
 }
 
+// @Description Msg_Req_UpdateRecord_To
 type Msg_Req_UpdateRecord_To struct {
-	TTL       *uint32
-	Forbidden *bool
+	TTL       *uint32 //optional
+	Forbidden *bool   //optional
 }
 
+// @Description Msg_Req_UpdateRecord
 type Msg_Req_UpdateRecord struct {
-	Filter Msg_Req_UpdateRecord_Filter
-	Update Msg_Req_UpdateRecord_To
+	Filter Msg_Req_UpdateRecord_Filter //required
+	Update Msg_Req_UpdateRecord_To     //required
 }
 
 //using API_META_STATUS as update response
 
 //delete
+// @Description Msg_Req_DeleteRecord_Filter
 type Msg_Req_DeleteRecord_Filter struct {
-	Id []uint
+	Id []uint //required
 }
 
+// @Description Msg_Req_DeleteRecord
 type Msg_Req_DeleteRecord struct {
-	Filter Msg_Req_DeleteRecord_Filter
+	Filter Msg_Req_DeleteRecord_Filter //required
 }
 
 //using API_META_STATUS as delete response

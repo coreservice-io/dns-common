@@ -12,9 +12,10 @@ type Domain struct {
 }
 
 //add api msg
+// @Description Msg_Req_AddDomain
 type Msg_Req_AddDomain struct {
-	Name            string
-	Expiration_time int64
+	Name            string //required
+	Expiration_time int64  //required
 }
 
 type Msg_Resp_AddDomain struct {
@@ -23,16 +24,18 @@ type Msg_Resp_AddDomain struct {
 }
 
 //query api msg
+// @Description Msg_Req_QueryDomain_Filter
 type Msg_Req_QueryDomain_Filter struct {
-	Id           *uint
-	Name_pattern *string
-	User_id      *uint
+	Id           *uint   //optional
+	Name_pattern *string //optional
+	User_id      *uint   //optional
 }
 
+// @Description Msg_Req_QueryDomain
 type Msg_Req_QueryDomain struct {
-	Filter Msg_Req_QueryDomain_Filter
-	Limit  int
-	Offset int
+	Filter Msg_Req_QueryDomain_Filter //required
+	Limit  int                        //required
+	Offset int                        //required
 }
 
 type Msg_Resp_QueryDomain struct {
@@ -42,29 +45,34 @@ type Msg_Resp_QueryDomain struct {
 }
 
 //update api msg
+// @Description Msg_Req_UpdateDomain_Filter
 type Msg_Req_UpdateDomain_Filter struct {
-	Id []uint
+	Id []uint //required
 }
 
+// @Description Msg_Req_UpdateDomain_To
 type Msg_Req_UpdateDomain_To struct {
-	Forbidden       *bool
-	Expiration_time *int64
+	Forbidden       *bool  //optional
+	Expiration_time *int64 //optional
 }
 
+// @Description Msg_Req_UpdateDomain
 type Msg_Req_UpdateDomain struct {
-	Filter Msg_Req_UpdateDomain_Filter
-	Update Msg_Req_UpdateDomain_To
+	Filter Msg_Req_UpdateDomain_Filter //required
+	Update Msg_Req_UpdateDomain_To     //required
 }
 
 //using API_META_STATUS as update response
 
 //delete
+// @Description Msg_Req_DeleteDomain_Filter
 type Msg_Req_DeleteDomain_Filter struct {
-	Id []uint
+	Id []uint //required
 }
 
+// @Description Msg_Req_DeleteDomain
 type Msg_Req_DeleteDomain struct {
-	Filter Msg_Req_DeleteDomain_Filter
+	Filter Msg_Req_DeleteDomain_Filter //required
 }
 
 //using API_META_STATUS as delete response
