@@ -1,15 +1,13 @@
 package commonMsg
 
 type Rule struct {
-	Id              int
-	Sys_version     int
-	Record_id       int
-	Continent_code  string
-	Country_code    string
-	Start_time_secs int64 //range 0-86399
-	End_time_secs   int64 //range 0-86399 End>Start
-	Destination     string
-	Weight          int
+	Id             int
+	Sys_version    int
+	Record_id      int
+	Continent_code string
+	Country_code   string
+	Destination    string
+	Weight         int
 
 	Updated int64
 	Created int64
@@ -22,8 +20,6 @@ type Msg_Req_AddRule struct {
 	Sys_version    int    //required
 	Continent_code string //required
 	Country_code   string //required
-	Start_time     string //required //15:08:08
-	End_time       string //required //15:08:08
 	Destination    string //required
 	Weight         int    //required
 }
@@ -59,8 +55,6 @@ type Msg_Req_UpdateRule_Filter struct {
 type Msg_Req_UpdateRule_To struct {
 	Continent_code *string //optional
 	Country_code   *string //optional
-	Start_time     *string //optional //15:08:08
-	End_time       *string //optional //15:08:08
 	Destination    *string //optional
 	Weight         *int    //optional
 }
