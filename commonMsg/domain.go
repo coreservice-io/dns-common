@@ -28,6 +28,7 @@ type Msg_Resp_AddDomain struct {
 type Msg_Req_QueryDomain_Filter struct {
 	Id           *uint   //optional
 	Name_pattern *string //optional
+	Name         *string //optional
 	User_id      *uint   //optional
 }
 
