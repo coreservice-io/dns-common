@@ -1,8 +1,8 @@
 package commonMsg
 
 type Record struct {
-	Id        uint
-	Domain_id uint
+	Id        int
+	Domain_id int
 	Name      string
 	Type      string
 	TTL       uint32
@@ -15,7 +15,7 @@ type Record struct {
 //add api msg
 // @Description Msg_Req_AddRecord
 type Msg_Req_AddRecord struct {
-	Domain_id uint   //required
+	Domain_id int    //required
 	Name      string //required
 	Type      string //required
 	TTL       uint32 //required
@@ -29,11 +29,11 @@ type Msg_Resp_AddRecord struct {
 //query
 // @Description Msg_Req_QueryRecord_Filter
 type Msg_Req_QueryRecord_Filter struct {
-	Id           *uint     //optional
+	Id           *int      //optional
 	Name         *[]string //optional //name list
 	Name_pattern *string   //optional //query name pattern
 	Type         *string   //optional
-	Domain_id    *uint     //optional
+	Domain_id    *int      //optional
 }
 
 // @Description Msg_Req_QueryRecord
@@ -52,7 +52,7 @@ type Msg_Resp_QueryRecord struct {
 //update
 // @Description Msg_Req_UpdateRecord_Filter
 type Msg_Req_UpdateRecord_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_UpdateRecord_To
@@ -72,7 +72,7 @@ type Msg_Req_UpdateRecord struct {
 //delete
 // @Description Msg_Req_DeleteRecord_Filter
 type Msg_Req_DeleteRecord_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_DeleteRecord

@@ -1,8 +1,8 @@
 package commonMsg
 
 type Cert struct {
-	Id              uint
-	User_id         uint
+	Id              int
+	User_id         int
 	Related_domain  []string
 	Hash            string
 	Cert_content    string
@@ -29,8 +29,8 @@ type Msg_Resp_AddCert struct {
 //query api msg
 // @Description Msg_Req_QueryCert_Filter
 type Msg_Req_QueryCert_Filter struct {
-	Id                     *uint   //optional
-	User_id                *uint   //optional
+	Id                     *int    //optional
+	User_id                *int    //optional
 	Related_domain_pattern *string //optional
 }
 
@@ -50,7 +50,7 @@ type Msg_Resp_QueryCert struct {
 //update api msg
 // @Description Msg_Req_UpdateCert_Filter
 type Msg_Req_UpdateCert_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_UpdateCert_To
@@ -70,7 +70,7 @@ type Msg_Req_UpdateCert struct {
 //delete
 // @Description Msg_Req_DeleteCert_Filter
 type Msg_Req_DeleteCert_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_DeleteCert

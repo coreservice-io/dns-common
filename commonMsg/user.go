@@ -1,7 +1,7 @@
 package commonMsg
 
 type User struct {
-	Id          uint
+	Id          int
 	Email       string
 	Password    string
 	Token       string
@@ -41,7 +41,7 @@ type Msg_Resp_UserInfo struct {
 //query
 // @Description Msg_Req_QueryUser_Filter
 type Msg_Req_QueryUser_Filter struct {
-	Id            *uint   //optional
+	Id            *int    //optional
 	Email_pattern *string //optional
 }
 
@@ -61,13 +61,13 @@ type Msg_Resp_QueryUser struct {
 //update
 // @Description Msg_Req_UpdateUser_Filter
 type Msg_Req_UpdateUser_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 //delete
 // @Description Msg_Req_DeleteUser_Filter
 type Msg_Req_DeleteUser_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_DeleteUser

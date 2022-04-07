@@ -1,9 +1,9 @@
 package commonMsg
 
 type Rule struct {
-	Id              uint
+	Id              int
 	Sys_version     int
-	Record_id       uint
+	Record_id       int
 	Continent_code  string
 	Country_code    string
 	Start_time_secs int64 //range 0-86399
@@ -18,7 +18,7 @@ type Rule struct {
 //add
 // @Description Msg_Req_AddRule
 type Msg_Req_AddRule struct {
-	Record_id      uint   //required
+	Record_id      int    //required
 	Sys_version    int    //required
 	Continent_code string //required
 	Country_code   string //required
@@ -36,7 +36,7 @@ type Msg_Resp_AddRule struct {
 //query
 // @Description Msg_Req_QueryRule_Filter
 type Msg_Req_QueryRule_Filter struct {
-	Record_id uint //required
+	Record_id int //required
 }
 
 // @Description Msg_Req_QueryRule
@@ -52,7 +52,7 @@ type Msg_Resp_QueryRules struct {
 //update
 // @Description Msg_Req_UpdateRule_Filter
 type Msg_Req_UpdateRule_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_UpdateRule_To
@@ -76,7 +76,7 @@ type Msg_Req_UpdateRule struct {
 //delete
 // @Description Msg_Req_DeleteRule_Filter
 type Msg_Req_DeleteRule_Filter struct {
-	Id []uint //required
+	Id []int //required
 }
 
 // @Description Msg_Req_DeleteRule

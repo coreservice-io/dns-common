@@ -81,15 +81,6 @@ func CheckChallengeCnameCorrect(applyDomain string, pullZoneName string, hostedD
 
 	_, challengeRecord, challengeTarget := GenCnameSetting(applyDomain, pullZoneName, hostedDomain)
 
-	//dest, err := net.LookupCNAME(applyDomain)
-	//if err != nil {
-	//	return err
-	//}
-	//
-	//if dest != hostDomainCname+"." {
-	//	return CustomHostDomainCnameErr
-	//}
-
 	dest, err := LookupCNAME(challengeRecord)
 	if err != nil {
 		return err
@@ -100,6 +91,24 @@ func CheckChallengeCnameCorrect(applyDomain string, pullZoneName string, hostedD
 
 	if dest[0] != challengeTarget+"." {
 		return ChallengeCnameErr
+	}
+
+	return nil
+}
+
+func CheckCnameCorrect(applyDomain string, pullZoneName string, hostedDomain string) error {
+	hostDomainCname, _, _ := GenCnameSetting(applyDomain, pullZoneName, hostedDomain)
+
+	dest, err := LookupCNAME(applyDomain)
+	if err != nil {
+		return err
+	}
+	if len(dest) == 0 {
+		return errors.New("CNAME record not found")
+	}
+
+	if dest[0] != hostDomainCname+"." {
+		return CustomHostDomainCnameErr
 	}
 
 	return nil
