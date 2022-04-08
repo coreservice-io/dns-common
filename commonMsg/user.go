@@ -1,7 +1,7 @@
 package commonMsg
 
 type User struct {
-	Id          int
+	Id          int64
 	Email       string
 	Password    string
 	Token       string
@@ -41,15 +41,15 @@ type Msg_Resp_UserInfo struct {
 //query
 // @Description Msg_Req_QueryUser_Filter
 type Msg_Req_QueryUser_Filter struct {
-	Id            *int    //optional
+	Id            *int64  //optional
 	Email_pattern *string //optional
 }
 
 // @Description Msg_Req_QueryUser
 type Msg_Req_QueryUser struct {
 	Filter Msg_Req_QueryUser_Filter //required
-	Limit  int                      //required
-	Offset int                      //required
+	Limit  int64                    //required
+	Offset int64                    //required
 }
 
 type Msg_Resp_QueryUser struct {
@@ -61,13 +61,13 @@ type Msg_Resp_QueryUser struct {
 //update
 // @Description Msg_Req_UpdateUser_Filter
 type Msg_Req_UpdateUser_Filter struct {
-	Id []int //required
+	Id []int64 //required
 }
 
 //delete
 // @Description Msg_Req_DeleteUser_Filter
 type Msg_Req_DeleteUser_Filter struct {
-	Id []int //required
+	Id []int64 //required
 }
 
 // @Description Msg_Req_DeleteUser

@@ -1,9 +1,9 @@
 package commonMsg
 
 type Domain struct {
-	Id              int
+	Id              int64
 	Name            string
-	User_id         int
+	User_id         int64
 	Forbidden       bool
 	Expiration_time int64
 
@@ -26,17 +26,17 @@ type Msg_Resp_AddDomain struct {
 //query api msg
 // @Description Msg_Req_QueryDomain_Filter
 type Msg_Req_QueryDomain_Filter struct {
-	Id           *int    //optional
+	Id           *int64  //optional
 	Name_pattern *string //optional
 	Name         *string //optional
-	User_id      *int    //optional
+	User_id      *int64  //optional
 }
 
 // @Description Msg_Req_QueryDomain
 type Msg_Req_QueryDomain struct {
 	Filter Msg_Req_QueryDomain_Filter //required
-	Limit  int                        //required
-	Offset int                        //required
+	Limit  int64                      //required
+	Offset int64                      //required
 }
 
 type Msg_Resp_QueryDomain struct {
@@ -48,7 +48,7 @@ type Msg_Resp_QueryDomain struct {
 //update api msg
 // @Description Msg_Req_UpdateDomain_Filter
 type Msg_Req_UpdateDomain_Filter struct {
-	Id []int //required
+	Id []int64 //required
 }
 
 // @Description Msg_Req_UpdateDomain_To
@@ -68,7 +68,7 @@ type Msg_Req_UpdateDomain struct {
 //delete
 // @Description Msg_Req_DeleteDomain_Filter
 type Msg_Req_DeleteDomain_Filter struct {
-	Id []int //required
+	Id []int64 //required
 }
 
 // @Description Msg_Req_DeleteDomain

@@ -1,13 +1,13 @@
 package commonMsg
 
 type Rule struct {
-	Id             int
-	Sys_version    int
-	Record_id      int
+	Id             int64
+	Sys_version    int64
+	Record_id      int64
 	Continent_code string
 	Country_code   string
 	Destination    string
-	Weight         int
+	Weight         int64
 
 	Updated int64
 	Created int64
@@ -16,12 +16,12 @@ type Rule struct {
 //add
 // @Description Msg_Req_AddRule
 type Msg_Req_AddRule struct {
-	Record_id      int    //required
-	Sys_version    int    //required
+	Record_id      int64  //required
+	Sys_version    int64  //required
 	Continent_code string //required
 	Country_code   string //required
 	Destination    string //required
-	Weight         int    //required
+	Weight         int64  //required
 }
 
 type Msg_Resp_AddRule struct {
@@ -32,7 +32,7 @@ type Msg_Resp_AddRule struct {
 //query
 // @Description Msg_Req_QueryRule_Filter
 type Msg_Req_QueryRule_Filter struct {
-	Record_id int //required
+	Record_id int64 //required
 }
 
 // @Description Msg_Req_QueryRule
@@ -48,7 +48,7 @@ type Msg_Resp_QueryRules struct {
 //update
 // @Description Msg_Req_UpdateRule_Filter
 type Msg_Req_UpdateRule_Filter struct {
-	Id []int //required
+	Id []int64 //required
 }
 
 // @Description Msg_Req_UpdateRule_To
@@ -56,7 +56,7 @@ type Msg_Req_UpdateRule_To struct {
 	Continent_code *string //optional
 	Country_code   *string //optional
 	Destination    *string //optional
-	Weight         *int    //optional
+	Weight         *int64  //optional
 }
 
 // @Description Msg_Req_UpdateRule
@@ -70,7 +70,7 @@ type Msg_Req_UpdateRule struct {
 //delete
 // @Description Msg_Req_DeleteRule_Filter
 type Msg_Req_DeleteRule_Filter struct {
-	Id []int //required
+	Id []int64 //required
 }
 
 // @Description Msg_Req_DeleteRule
