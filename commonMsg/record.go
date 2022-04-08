@@ -39,8 +39,8 @@ type Msg_Req_QueryRecord_Filter struct {
 // @Description Msg_Req_QueryRecord
 type Msg_Req_QueryRecord struct {
 	Filter Msg_Req_QueryRecord_Filter //required
-	Limit  int64                      //required
-	Offset int64                      //required
+	Limit  int                        //required
+	Offset int                        //required
 }
 
 type Msg_Resp_QueryRecord struct {

@@ -37,8 +37,8 @@ type Msg_Req_QueryCert_Filter struct {
 // @Description Msg_Req_QueryCert
 type Msg_Req_QueryCert struct {
 	Filter Msg_Req_QueryCert_Filter //required
-	Limit  int64                    //required
-	Offset int64                    //required
+	Limit  int                      //required
+	Offset int                      //required
 }
 
 type Msg_Resp_QueryCert struct {

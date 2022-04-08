@@ -48,8 +48,8 @@ type Msg_Req_QueryUser_Filter struct {
 // @Description Msg_Req_QueryUser
 type Msg_Req_QueryUser struct {
 	Filter Msg_Req_QueryUser_Filter //required
-	Limit  int64                    //required
-	Offset int64                    //required
+	Limit  int                      //required
+	Offset int                      //required
 }
 
 type Msg_Resp_QueryUser struct {
