@@ -2,7 +2,6 @@ package commonMsg
 
 type Rule struct {
 	Id             int64
-	Sys_version    int64
 	Record_id      int64
 	Continent_code string
 	Country_code   string
@@ -17,7 +16,6 @@ type Rule struct {
 // @Description Msg_Req_AddRule
 type Msg_Req_AddRule struct {
 	Record_id      int64  //required
-	Sys_version    int64  //required
 	Continent_code string //required
 	Country_code   string //required
 	Destination    string //required
