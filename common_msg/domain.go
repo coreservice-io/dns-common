@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 type Domain struct {
 	Id              int64

@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 type Record struct {
 	Id        int64

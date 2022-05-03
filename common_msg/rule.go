@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 type Rule struct {
 	Id             int64

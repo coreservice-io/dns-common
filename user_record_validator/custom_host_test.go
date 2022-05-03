@@ -1,4 +1,4 @@
-package userRecordValidator
+package user_record_validator
 
 import (
 	"log"

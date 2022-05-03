@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 type User struct {
 	Id          int64

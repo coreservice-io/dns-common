@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 type Cert struct {
 	Id              int64

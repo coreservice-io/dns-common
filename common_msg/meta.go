@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 //api meta
 

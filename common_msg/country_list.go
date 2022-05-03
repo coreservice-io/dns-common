@@ -1,4 +1,4 @@
-package commonMsg
+package common_msg
 
 type Msg_Resp_CountryList struct {
 	API_META_STATUS
