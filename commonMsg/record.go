@@ -32,7 +32,7 @@ type Msg_Req_QueryRecord_Filter struct {
 	Id           *int64    //optional
 	Name         *[]string //optional //name list
 	Name_pattern *string   //optional //query name pattern
-	Type         *string   //optional
+	Type         *[]string //optional
 	Domain_id    *int64    //optional
 }
 
