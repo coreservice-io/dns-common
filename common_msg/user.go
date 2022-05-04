@@ -1,13 +1,13 @@
 package common_msg
 
 type User struct {
-	Id          int64  `json:"id"`
-	Email       string `json:"email"`
-	Password    string `json:"password"`
-	Token       string `json:"token"`
-	Forbidden   bool   `json:"forbidden"`
-	Roles       string `json:"roles"`
-	Permissions string `json:"permissions"`
+	Id          int64    `json:"id"`
+	Email       string   `json:"email"`
+	Password    string   `json:"password"`
+	Token       string   `json:"token"`
+	Forbidden   bool     `json:"forbidden"`
+	Roles       []string `json:"roles"`
+	Permissions []string `json:"permissions"`
 
 	Updated_unixtime int64 `gorm:"autoUpdateTime" json:"updated_unixtime"`
 	Created_unixtime int64 `gorm:"autoCreateTime" json:"created_unixtime"`
