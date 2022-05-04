@@ -2,12 +2,12 @@ package common_msg
 
 type Msg_Resp_CountryList struct {
 	API_META_STATUS
-	Country_list map[string]CountryData
+	Country_list map[string]CountryData `json:"country_list"`
 }
 
 type CountryData struct {
-	Country_code   string
-	Country_name   string
-	Continent_code string
-	Continent_name string
+	Country_code   string `json:"country_code"`
+	Country_name   string `json:"country_name"`
+	Continent_code string `json:"continent_code"`
+	Continent_name string `json:"continent_name"`
 }
