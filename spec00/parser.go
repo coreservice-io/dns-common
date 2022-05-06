@@ -64,6 +64,9 @@ func GenerateSpecStr(ip string, optionalStr ...string) (string, error) {
 	for _, v := range optionalStr {
 		cStr := fmt.Sprintf("-%02d-%s", len(v), v)
 		str += cStr
+		if len(str) > 63 {
+			return "", errors.New("spec string too long")
+		}
 	}
 
 	return str, nil
