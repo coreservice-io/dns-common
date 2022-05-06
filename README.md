@@ -4,9 +4,9 @@
 
 using spec00
 
-{spec00}-{node tag}-{optional}.domain.com
+{spec00}-{ip}{optional}.domain.com
 
-optional format: -{length,2 digits}-{optional string}
+optional format: -{2 digits representing content length}-{content}
 
 example:
 
@@ -33,15 +33,21 @@ func main() {
 	log.Println(spec00.Parser("spec00-fikcbikcafkcdax-19-thisisthebinddomain.domain.com"))
 	log.Println(spec00.Parser("spec00-fikbkakaxxxxxxx-06-exsief-03-aaa-04-tttt.sdff.com"))
 	log.Println(spec00.Parser("spec00-bkbkbkbxxxxxxxx"))
+	log.Println(spec00.Parser("spec00-bkbkbkbxxxxxxxx-00--00--01-a"))
+	log.Println(spec00.Parser("spec00-bkbkbkbxxxxxxxx-00--00--00-"))
+
 	log.Println(spec00.Parser("spec00-bkbkbkbxxxxxxxx-05-sf")) // length error
-	log.Println(spec00.Parser("spec00-bkbk")) // error
-	
+	log.Println(spec00.Parser("spec00-bkbk"))                  // error
+
 	//gen example
 	log.Println(spec00.GenerateSpecStr("58.218.205.230", "thisisthebinddomain"))
 	log.Println(spec00.GenerateSpecStr("58.1.0.0", "exsief", "aaa", "bbb", "cccc"))
 	log.Println(spec00.GenerateSpecStr("1.1.1.1", "sdfewfwfwef"))
+	log.Println(spec00.GenerateSpecStr("1.1.1.1", "", "", "a"))
+	log.Println(spec00.GenerateSpecStr("1.1.1.1", "", "", ""))
 	log.Println(spec00.GenerateSpecStr("1.1.1.1"))
 }
+
 ```
 
 ## gen and check cname setting when using custom cert
