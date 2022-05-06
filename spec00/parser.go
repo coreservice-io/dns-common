@@ -12,32 +12,42 @@ import (
 const ipReg = "((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}"
 
 //spec00-fikcbikcafkcdax-19-thisisthebinddomain.domain.com
-func Parser(specStr string) (ip string, bindName string, err error) {
+func Parser(specStr string) (ip string, optionalStr []string, err error) {
 	if !strings.HasPrefix(specStr, "spec00-") {
-		return "", "", errors.New("not node mapping spec")
+		return "", []string{}, errors.New("not node mapping spec")
 	}
 
+	specStr = strings.Split(specStr, ".")[0]
+
 	//get tag
-	if len(specStr) < 25 {
-		return "", "", errors.New("length error")
+	if len(specStr) < 22 {
+		return "", []string{}, errors.New("length error")
 	}
 	tag := specStr[7:21]
 	ip = tagToIp(tag)
 
-	//get bindName
-	bindNameLength, err := strconv.Atoi(specStr[23:25])
-	if err != nil {
-		return "", "", err
+	optionalStr = []string{}
+	passedLength := 22
+	for {
+		if len(specStr) < passedLength+3 {
+			break
+		}
+		length, err := strconv.Atoi(specStr[passedLength+1 : passedLength+3])
+		if err != nil {
+			return "", []string{}, err
+		}
+		if len(specStr) < passedLength+4+length {
+			return "", []string{}, errors.New("optional pair length error")
+		}
+		str := specStr[passedLength+4 : passedLength+4+length]
+		optionalStr = append(optionalStr, str)
+		passedLength += 4 + length
 	}
-	if len(specStr) < 26+bindNameLength {
-		return "", "", errors.New("length error")
-	}
-	bindName = specStr[26 : 26+bindNameLength]
 
-	return ip, bindName, nil
+	return ip, optionalStr, nil
 }
 
-func GenerateSpecStr(ip string, bindName string) (string, error) {
+func GenerateSpecStr(ip string, optionalStr ...string) (string, error) {
 	//check ip
 	if strings.HasPrefix(ip, "0") {
 		return "", errors.New("ip error")
@@ -47,15 +57,16 @@ func GenerateSpecStr(ip string, bindName string) (string, error) {
 		return "", errors.New("ip error")
 	}
 
-	//check bindName
-	if bindName == "" {
-		return "", errors.New("bindname error")
-	}
-
 	//ip to tag
 	tag := ipToTag(ip)
+	str := fmt.Sprintf("spec00-%s", tag)
 
-	return fmt.Sprintf("spec00-%s-%02d-%s", tag, len(bindName), bindName), nil
+	for _, v := range optionalStr {
+		cStr := fmt.Sprintf("-%02d-%s", len(v), v)
+		str += cStr
+	}
+
+	return str, nil
 }
 
 func bytes2str(b []byte) string {
