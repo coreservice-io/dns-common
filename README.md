@@ -4,7 +4,7 @@
 
 using spec00
 
-{spec00}-{ip}{optional}.domain.com
+{spec00}-{ip_hash}{optional}.domain.com
 
 optional format: -{2 digits representing content length}-{content}
 
