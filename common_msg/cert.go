@@ -8,6 +8,7 @@ type Cert struct {
 	Expiration_time int64    `json:"expiration_time"`
 	Hash            string   `json:"hash"`
 	Related_domain  []string `json:"related_domain"`
+	Cert_tokens     []string `json:"cert_tokens"`
 
 	Updated_unixtime int64 `gorm:"autoUpdateTime" json:"updated_unixtime"`
 	Created_unixtime int64 `gorm:"autoCreateTime" json:"created_unixtime"`
@@ -55,8 +56,9 @@ type Msg_Req_UpdateCert_Filter struct {
 
 // @Description Msg_Req_UpdateCert_To
 type Msg_Req_UpdateCert_To struct {
-	Cert_content string `json:"cert_content"` //required
-	Key_content  string `json:"key_content"`  //required
+	Cert_content *string   `json:"cert_content"` //optional
+	Key_content  *string   `json:"key_content"`  //optional
+	Cert_tokens  *[]string `json:"cert_tokens"`  //optional
 }
 
 // @Description Msg_Req_UpdateCert
@@ -93,4 +95,9 @@ type Msg_Resp_ApplyCustomCert struct {
 	API_META_STATUS
 	Cert_content string `json:"cert_content"`
 	Key_content  string `json:"key_content"`
+}
+
+type Msg_Resp_DownloadCert struct {
+	API_META_STATUS
+	Cert *Cert `json:"cert"`
 }
