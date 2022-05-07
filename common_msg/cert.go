@@ -3,7 +3,7 @@ package common_msg
 type Cert struct {
 	Id              int64    `json:"id"`
 	User_id         int64    `json:"user_id"`
-	Cert_content    string   `json:"cert_content"`
+	Cert_content    string   `json:"crt_content"`
 	Key_content     string   `json:"key_content"`
 	Expiration_time int64    `json:"expiration_time"`
 	Hash            string   `json:"hash"`
