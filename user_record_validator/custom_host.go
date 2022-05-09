@@ -48,10 +48,10 @@ func LookupCNAME(src string) (dst []string, err error) {
 //  example
 //	abc.customer.com (customer's domain who wants to have a certificate )
 //	hosted.com (hosted.com is the domain already registered in the server , this should be provided to customer)
-//	tg (sub domain tag provided by customer)
+//	tag (sub domain tag provided by customer)
 //	set cname record
-//	1. customer add CNAME abc.customer.com => tg.hosted.com
-//	2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tg.hosted.com
+//	1. customer add CNAME abc.customer.com => tag.hosted.com
+//	2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tag.hosted.com
 func GenCnameSetting(applyDomain string, txt_tag string, hostedDomain string) (hostDomainCname string, challengeRecord string, challengeTarget string) {
 	hostDomainCname = txt_tag + "." + hostedDomain
 	challengeRecord = "_acme-challenge." + applyDomain
@@ -71,10 +71,10 @@ func GenCnameSetting(applyDomain string, txt_tag string, hostedDomain string) (h
 //  example
 //	abc.customer.com (customer's domain who wants to have a certificate )
 //	hosted.com (hosted.com is the domain already registered in the server , this should be provided to customer)
-//	tg (sub domain tag provided by customer)
+//	tag (sub domain tag provided by customer)
 //	set cname record
-//	1. customer add CNAME abc.customer.com => tg.hosted.com
-//	2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tg.hosted.com
+//	1. customer add CNAME abc.customer.com => tag.hosted.com
+//	2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tag.hosted.com
 func CheckChallengeCnameCorrect(applyDomain string, txt_tag string, hostedDomain string) error {
 
 	_, challengeRecord, challengeTarget := GenCnameSetting(applyDomain, txt_tag, hostedDomain)

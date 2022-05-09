@@ -60,9 +60,9 @@ abc.customer.com (customer's domain who wants to have a certificate )
 
 hosted.com (hosted.com is the domain already registered in the server , this should be provided to customer)
 
-tg (sub domain tag provided by customer)
+tag (sub domain tag provided by customer)
 
 
 set cname record
-1. customer add CNAME abc.customer.com => tg.hosted.com
-2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tg.hosted.com
+1. customer add CNAME abc.customer.com => tag.hosted.com
+2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tag.hosted.com
