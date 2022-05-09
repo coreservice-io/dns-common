@@ -46,17 +46,14 @@ func LookupCNAME(src string) (dst []string, err error) {
 
 // GenCnameSetting
 //  example
-//  applyDomain: www.somedomain.com
-//  pullZoneName: pullzonexxx
-//  hostedDomain: mesoncdn.com
-//  gen setting
-//  hostDomainCname: pullzonexxx.mesoncdn.com
-//  challengeRecord: _acme-challenge.www.somedomain.com
-//  challengeTarget: _acme-challenge.www.pullzonexxx.mesoncdn.com
-//  1. CNAME  www.somedomain.com => pullzonexxx.mesoncdn.com
-//  2. CNAME  _acme-challenge.www.somedomain.com => _acme-challenge.www.pullzonexxx.mesoncdn.com
-func GenCnameSetting(applyDomain string, pullZoneName string, hostedDomain string) (hostDomainCname string, challengeRecord string, challengeTarget string) {
-	hostDomainCname = pullZoneName + "." + hostedDomain
+//	abc.customer.com (customer's domain who wants to have a certificate )
+//	hosted.com (hosted.com is the domain already registered in the server , this should be provided to customer)
+//	tg (sub domain tag provided by customer)
+//	set cname record
+//	1. customer add CNAME abc.customer.com => tg.hosted.com
+//	2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tg.hosted.com
+func GenCnameSetting(applyDomain string, txt_tag string, hostedDomain string) (hostDomainCname string, challengeRecord string, challengeTarget string) {
+	hostDomainCname = txt_tag + "." + hostedDomain
 	challengeRecord = "_acme-challenge." + applyDomain
 
 	//split root domain   _acme-challenge.www.somedomain.com=> _acme-challenge.www
@@ -64,7 +61,7 @@ func GenCnameSetting(applyDomain string, pullZoneName string, hostedDomain strin
 	parts = parts[:len(parts)-2]
 	pre := strings.Join(parts, ".")
 
-	challengeTarget = pre + "." + pullZoneName + "." + hostedDomain
+	challengeTarget = pre + "." + txt_tag + "." + hostedDomain
 
 	return
 }
@@ -72,14 +69,15 @@ func GenCnameSetting(applyDomain string, pullZoneName string, hostedDomain strin
 // CheckChallengeCnameCorrect
 //  before apply must set dns record in customer's dns server
 //  example
-//  applyDomain: www.somedomain.com
-//  pullZoneName: pullzonexxx
-//  hostedDomain: mesoncdn.com
-//  1. CNAME  www.somedomain.com => pullzonexxx.mesoncdn.com
-//  2. CNAME  _acme-challenge.www.somedomain.com => _acme-challenge.www.pullzonexxx.mesoncdn.com
-func CheckChallengeCnameCorrect(applyDomain string, pullZoneName string, hostedDomain string) error {
+//	abc.customer.com (customer's domain who wants to have a certificate )
+//	hosted.com (hosted.com is the domain already registered in the server , this should be provided to customer)
+//	tg (sub domain tag provided by customer)
+//	set cname record
+//	1. customer add CNAME abc.customer.com => tg.hosted.com
+//	2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tg.hosted.com
+func CheckChallengeCnameCorrect(applyDomain string, txt_tag string, hostedDomain string) error {
 
-	_, challengeRecord, challengeTarget := GenCnameSetting(applyDomain, pullZoneName, hostedDomain)
+	_, challengeRecord, challengeTarget := GenCnameSetting(applyDomain, txt_tag, hostedDomain)
 
 	dest, err := LookupCNAME(challengeRecord)
 	if err != nil {
@@ -96,8 +94,8 @@ func CheckChallengeCnameCorrect(applyDomain string, pullZoneName string, hostedD
 	return nil
 }
 
-func CheckCnameCorrect(applyDomain string, pullZoneName string, hostedDomain string) error {
-	hostDomainCname, _, _ := GenCnameSetting(applyDomain, pullZoneName, hostedDomain)
+func CheckCnameCorrect(applyDomain string, txt_tag string, hostedDomain string) error {
+	hostDomainCname, _, _ := GenCnameSetting(applyDomain, txt_tag, hostedDomain)
 
 	dest, err := LookupCNAME(applyDomain)
 	if err != nil {

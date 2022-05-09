@@ -54,21 +54,15 @@ func main() {
 
 example
 
-Apply_domain: www.somedomain.com
-
-Txt_name_tag: pullzonexxx
-
-Hosted_domain: mesoncdn.com
-
-
 gen setting
 
-hostDomainCname: pullzonexxx.mesoncdn.com
+abc.customer.com (customer's domain who wants to have a certificate )
 
-challengeRecord: _acme-challenge.www.somedomain.com
+hosted.com (hosted.com is the domain already registered in the server , this should be provided to customer)
 
-challengeTarget: _acme-challenge.www.pullzonexxx.mesoncdn.com
+tg (sub domain tag provided by customer)
+
 
 set cname record
-1. CNAME  www.somedomain.com => pullzonexxx.mesoncdn.com
-2. CNAME  _acme-challenge.www.somedomain.com => _acme-challenge.www.pullzonexxx.mesoncdn.com
+1. customer add CNAME abc.customer.com => tg.hosted.com
+2. customer add CNAME _acme-challenge.abc.customer.com => _acme-challenge.abc.tg.hosted.com

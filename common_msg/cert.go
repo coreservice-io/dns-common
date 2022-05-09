@@ -86,9 +86,9 @@ type Msg_Req_DeleteCert struct {
 
 // @Description Msg_Req_ApplyCustomCert
 type Msg_Req_ApplyCustomCert struct {
-	Apply_domain  string `json:"apply_domain"`  //required //ex. example.customdomain.com  (cname to pz1.mesoncdn.com)
-	Txt_name_tag  string `json:"txt_name_tag"`  //required //ex. pz1
-	Hosted_domain string `json:"hosted_domain"` //required //ex. mesoncdn.com
+	Apply_domain  string `json:"apply_domain"`  //required //ex. abc.customer.com
+	Txt_name_tag  string `json:"txt_name_tag"`  //required //ex. tg
+	Hosted_domain string `json:"hosted_domain"` //required //ex. hosted.com
 }
 
 type Msg_Resp_ApplyCustomCert struct {
