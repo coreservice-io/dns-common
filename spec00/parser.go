@@ -23,7 +23,7 @@ func Parser(specStr string) (ip string, optionalStr []string, err error) {
 	if len(specStr) < 22 {
 		return "", []string{}, errors.New("length error")
 	}
-	tag := specStr[7:21]
+	tag := specStr[7:22]
 	ip = tagToIp(tag)
 
 	optionalStr = []string{}
